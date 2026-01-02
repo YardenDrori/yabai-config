@@ -42,7 +42,7 @@ shift + alt - f : ~/.config/yabai/scripts/toggle_fullscreen.sh
 # Toggle window split type
 alt - e : yabai -m window --toggle split
 
-# Focus space (per-display workspaces 1-9)
+# Focus space (per-display workspaces 1-10)
 alt - 1 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 1
 alt - 2 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 2
 alt - 3 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 3
@@ -52,8 +52,9 @@ alt - 6 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/f
 alt - 7 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 7
 alt - 8 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 8
 alt - 9 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 9
+alt - 0 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 10
 
-# Send window to space and follow focus (per-display workspaces 1-9)
+# Send window to space and follow focus (per-display workspaces 1-10)
 shift + alt - 1 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 1
 shift + alt - 2 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 2
 shift + alt - 3 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 3
@@ -63,6 +64,7 @@ shift + alt - 6 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/s
 shift + alt - 7 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 7
 shift + alt - 8 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 8
 shift + alt - 9 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 9
+shift + alt - 0 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 10
 
 # Resize windows
 ctrl + alt - left  : yabai -m window --resize left:-50:0; \
