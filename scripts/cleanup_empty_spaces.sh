@@ -3,13 +3,13 @@
 # Clean up empty dynamic spaces (per-display ws2-ws10) and unlabeled spaces
 # Spaces with labels matching "d*-ws*" pattern or unlabeled spaces beyond position 1 will be destroyed if empty
 # Static space (d*-one) is never destroyed
-# Only truly visible windows prevent cleanup (non-visible and hidden windows are ignored)
+# Workspaces with non-hidden, non-minimized windows are preserved (hidden and minimized windows are ignored)
 
 # Get current space to avoid destroying it
 CURRENT_SPACE=$(yabai -m query --spaces --space | jq '.index')
 
-# Get list of actual window space indices (only visible windows)
-WINDOW_SPACES=$(yabai -m query --windows | jq -r '[.[] | select(."is-visible" == true) | .space] | unique | .[]')
+# Get list of actual window space indices (non-hidden, non-minimized windows)
+WINDOW_SPACES=$(yabai -m query --windows | jq -r '[.[] | select(."is-hidden" == false and ."is-minimized" == false) | .space] | unique | .[]')
 
 # Get all spaces on each display
 for display in $(yabai -m query --displays | jq -r '.[].index'); do
