@@ -1,0 +1,75 @@
+#!/usr/bin/env sh
+
+# Load the scripting addition (required for many features)
+yabai -m signal --add event=dock_did_restart action="sudo yabai --load-sa"
+sudo yabai --load-sa
+
+# Basic configuration example (you can customize these later)
+# Layout mode (bsp = binary space partitioning, float = floating)
+yabai -m config layout bsp
+
+# Per-display workspace configuration
+# Initialize per-display workspace labels on startup
+~/.config/yabai/scripts/init_display_workspaces.sh
+
+# Re-initialize labels when displays or spaces change
+yabai -m signal --add event=display_added action="~/.config/yabai/scripts/init_display_workspaces.sh"
+yabai -m signal --add event=display_removed action="~/.config/yabai/scripts/init_display_workspaces.sh"
+yabai -m signal --add event=space_created action="~/.config/yabai/scripts/init_display_workspaces.sh"
+
+# Auto-cleanup empty dynamic spaces (5-9) when switching workspaces or destroying windows
+yabai -m signal --add event=space_changed action="~/.config/yabai/scripts/cleanup_empty_spaces.sh"
+yabai -m signal --add event=window_destroyed action="~/.config/yabai/scripts/cleanup_empty_spaces.sh"
+
+# Refresh focus_follows_mouse on workspace change to fix random breakage
+yabai -m signal --add event=space_changed action="~/Documents/steganography/yabai-refresh-focus.sh"
+
+# Window padding
+yabai -m config top_padding 4
+yabai -m config bottom_padding 6
+yabai -m config left_padding 6
+yabai -m config right_padding 6
+yabai -m config window_gap 6
+
+# Mouse settings
+# yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse autoraise
+
+# Mouse modifiers - alt+left click to move, alt+right click to resize
+yabai -m config mouse_modifier alt
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+
+# Window modifications
+yabai -m config window_placement second_child
+yabai -m config window_opacity on
+yabai -m config active_window_opacity 1.0
+yabai -m config normal_window_opacity 0.95
+yabai -m config window_shadow off
+
+# Ghostty workaround - native tabs appear as separate windows in YABAI
+# Force layout reload when Ghostty windows are created
+# yabai -m signal --add app='^Ghostty$' event=window_created action='yabai -m space --layout bsp'
+# General workaround for apps that don't report window destruction
+# yabai -m signal --add event=application_front_switched action='yabai -m space --layout bsp'
+
+# Window borders (requires scripting addition)
+yabai -m config window_border off
+
+# Rules for System Settings
+yabai -m rule --add app="^System Settings$" sticky=on
+yabai -m rule --add app="^System Settings$" float=on
+
+# Sticky + Fullscreen apps (non-native fullscreen, appears on all workspaces)
+yabai -m rule --add app="^‎WhatsApp$" manage=on
+yabai -m rule --add app="^Music$" manage=on
+
+# Auto-fullscreen and focus when windows are created
+yabai -m signal --add app="^‎WhatsApp$" event=window_created action="~/.config/yabai/scripts/sticky_fullscreen.sh"
+yabai -m signal --add app="^Music$" event=window_created action="~/.config/yabai/scripts/sticky_fullscreen.sh"
+
+# Handle Music when app is activated (opened while already running)
+yabai -m signal --add app="^Music$" event=application_activated action="~/.config/yabai/scripts/music_activate.sh"
+
+#hide macos menubar
+# yabai -m config menubar_opacity 0.0

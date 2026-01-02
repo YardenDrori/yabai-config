@@ -1,0 +1,94 @@
+# skhd configuration for yabai
+
+# Navigation - focus window
+alt - h : yabai -m window --focus west
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - l : yabai -m window --focus east
+
+# Moving windows
+shift + alt - h : yabai -m window --swap west
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - l : yabai -m window --swap east
+
+# Move window and split
+ctrl + alt - h : yabai -m window --warp west
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - l : yabai -m window --warp east
+
+# Balance out tree of windows (resize to occupy same space)
+shift + alt - e : yabai -m space --balance
+
+# Rotate layout clockwise
+shift + alt - r : yabai -m space --rotate 270
+
+# Flip along y-axis
+shift + alt - y : yabai -m space --mirror y-axis
+
+# Flip along x-axis
+shift + alt - x : yabai -m space --mirror x-axis
+
+# Toggle window float
+shift + alt - t : yabai -m window --toggle float --grid 4:4:1:1:2:2
+
+# Maximize a window
+shift + alt - m : yabai -m window --toggle zoom-fullscreen
+
+# Toggle Yabai's external fullscreen mode
+shift + alt - f : ~/.config/yabai/scripts/toggle_fullscreen.sh
+
+# Toggle window split type
+alt - e : yabai -m window --toggle split
+
+# Focus space (per-display workspaces 1-9)
+alt - 1 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 1
+alt - 2 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 2
+alt - 3 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 3
+alt - 4 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 4
+alt - 5 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 5
+alt - 6 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 6
+alt - 7 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 7
+alt - 8 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 8
+alt - 9 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/focus_or_create_space.sh 9
+
+# Send window to space and follow focus (per-display workspaces 1-9)
+shift + alt - 1 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 1
+shift + alt - 2 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 2
+shift + alt - 3 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 3
+shift + alt - 4 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 4
+shift + alt - 5 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 5
+shift + alt - 6 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 6
+shift + alt - 7 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 7
+shift + alt - 8 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 8
+shift + alt - 9 : ~/.config/yabai/scripts/ensure_indicator.sh; ~/.config/yabai/scripts/move_to_space.sh 9
+
+# Resize windows
+ctrl + alt - left  : yabai -m window --resize left:-50:0; \
+                     yabai -m window --resize right:-50:0
+ctrl + alt - down  : yabai -m window --resize bottom:0:50; \
+                     yabai -m window --resize top:0:50
+ctrl + alt - up    : yabai -m window --resize top:0:-50; \
+                     yabai -m window --resize bottom:0:-50
+ctrl + alt - right : yabai -m window --resize right:50:0; \
+                     yabai -m window --resize left:50:0
+
+# Change layout mode
+ctrl + alt - a : yabai -m space --layout bsp
+ctrl + alt - d : yabai -m space --layout float
+
+# Open Ghostty terminal (always new window)
+alt - return : /Applications/Ghostty.app/Contents/MacOS/ghostty
+
+# Open applications
+alt - s : open -a "WhatsApp"
+alt - d : open -a "Discord"
+alt - m : open -a "Music"
+alt - b : open -a "Safari"
+
+# Cycle between displays
+alt - tab : ~/.config/yabai/scripts/cycle_displays.sh
+
+# Restart yabai and skhd
+ctrl + alt + cmd - r : yabai --restart-service; skhd --restart-service
