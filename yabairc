@@ -66,10 +66,10 @@ yabai -m rule --add app="^Music$" manage=on
 
 # Auto-fullscreen and focus when windows are created
 yabai -m signal --add app="^‎WhatsApp$" event=window_created action="~/.config/yabai/scripts/sticky_fullscreen.sh"
-yabai -m signal --add app="^Music$" event=window_created action="~/.config/yabai/scripts/sticky_fullscreen.sh"
+# yabai -m signal --add app="^Music$" event=window_created action="~/.config/yabai/scripts/sticky_fullscreen.sh"
 
 # Handle Music when app is activated (opened while already running)
-yabai -m signal --add app="^Music$" event=application_activated action="~/.config/yabai/scripts/music_activate.sh"
+# yabai -m signal --add app="^Music$" event=application_activated action="~/.config/yabai/scripts/music_activate.sh"
 
 #hide macos menubar
 # yabai -m config menubar_opacity 0.0
