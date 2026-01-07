@@ -25,11 +25,11 @@ yabai -m signal --add event=window_destroyed action="~/.config/yabai/scripts/cle
 yabai -m signal --add event=space_changed action="~/Documents/steganography/yabai-refresh-focus.sh"
 
 # Window padding
-yabai -m config top_padding 4
-yabai -m config bottom_padding 6
-yabai -m config left_padding 6
-yabai -m config right_padding 6
-yabai -m config window_gap 6
+yabai -m config top_padding 2
+yabai -m config bottom_padding 3
+yabai -m config left_padding 3
+yabai -m config right_padding 3
+yabai -m config window_gap 3
 
 # Mouse settings
 # yabai -m config mouse_follows_focus off
